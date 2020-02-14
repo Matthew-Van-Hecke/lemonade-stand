@@ -13,7 +13,7 @@ namespace LemonadeStand_3DayStarter
         public Day(Random random)
         {
             weather = new Weather(random);
-            customers = new List<Customer>() { new Customer(), new Customer(), new Customer, new Customer() };
+            customers = new List<Customer>() { new Customer(), new Customer(), new Customer(), new Customer() };
         }
     }
 }

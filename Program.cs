@@ -8,17 +8,9 @@ namespace LemonadeStand_3DayStarter
 {
     class Program
     {
-        internal Game Game
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         static void Main(string[] args)
         {
-
+            
         }
     }
 }
