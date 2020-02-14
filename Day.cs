@@ -16,7 +16,7 @@ namespace LemonadeStand_3DayStarter
         {
             weather = new Weather(random);
             customers = new List<Customer>() { new Customer(random), new Customer(random), new Customer(random), new Customer(random) };
-            weatherValue = weather.temperature * (weather.conditions.IndexOf(weather.currentCondition) + 1);
+            weatherValue = (weather.temperature * (weather.conditions.IndexOf(weather.currentCondition) + 1))/25;
         }
         //Member Methods
 

@@ -26,10 +26,14 @@ namespace LemonadeStand_3DayStarter
             name = names[random.Next(names.Count)];
             tasteConstant = random.Next(1, 10);
             thirst = random.Next(1, 3);
-            satisfaction = 1;
+            satisfaction = 10;
             likelinessToBuy = thirst * satisfaction;
         }
         //Member Methods
-
+        public bool CustomerSatisfied()
+        {
+            //if taste of lemonade is less than taste constant, decrement satisfaction, if greater, increment it, if same, same.
+            return true;
+        }
     }
 }
