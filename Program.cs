@@ -10,8 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         static void Main(string[] args)
         {
-            Day today = new Day(new Random());
-            Console.WriteLine(today.weatherValue);
+            
             Console.ReadLine();
         }
     }
