@@ -10,7 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         //Member Variables
         public int temperature;
-        List<string> conditions;
+        public List<string> conditions;
         Random random;
         public string currentCondition;
         //Constructor
@@ -22,5 +22,6 @@ namespace LemonadeStand_3DayStarter
             currentCondition = conditions[random.Next(conditions.Count)];
         }
         //Member Methods
+
     }
 }

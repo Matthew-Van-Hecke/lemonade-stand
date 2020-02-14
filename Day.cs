@@ -8,12 +8,17 @@ namespace LemonadeStand_3DayStarter
 {
     class Day
     {
-        Weather weather;
-        List<Customer> customers;
+        public Weather weather;
+        public int weatherValue;
+        public List<Customer> customers;
+
         public Day(Random random)
         {
             weather = new Weather(random);
             customers = new List<Customer>() { new Customer(random), new Customer(random), new Customer(random), new Customer(random) };
+            weatherValue = weather.temperature * (weather.conditions.IndexOf(weather.currentCondition) + 1);
         }
+        //Member Methods
+
     }
 }

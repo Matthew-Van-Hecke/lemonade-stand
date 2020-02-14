@@ -12,6 +12,7 @@ namespace LemonadeStand_3DayStarter
         Player player;
         List<Day> days;
         int currentDay;
+        
         Random masterRandom;
         //Constructor
         public Game()
@@ -22,5 +23,6 @@ namespace LemonadeStand_3DayStarter
             currentDay = 0;
         }
         //Member Methods
+
     }
 }
