@@ -10,7 +10,10 @@ namespace LemonadeStand_3DayStarter
     {
         static void Main(string[] args)
         {
-            
+            Recipe recipe = new Recipe();
+            Pitcher pitcher;
+            pitcher = recipe.MakePitcher();
+            Console.WriteLine("Pitcher contains " + pitcher.numberOfCupsRemaining + " cups.");
             Console.ReadLine();
         }
     }

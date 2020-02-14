@@ -23,9 +23,17 @@ namespace LemonadeStand_3DayStarter
             numberOfIceCubes = 128;
         }
         //Member Methods
+
+        //Will probably eventually want to move this method to the player class.
         public Pitcher MakePitcher()
         {
             taste = (numberOfLemons + numberOfSugarCubes + numberOfIceCubes) / numberOfCups;
+            PrintCurrentRecipe();
+            if (WouldYouLikeToAdjustRecipe())
+            {
+                AdjustRecipe();
+                PrintCurrentRecipe();
+            }
             return new Pitcher(numberOfCups, taste);
         }
         public void AdjustRecipe()
@@ -47,7 +55,7 @@ namespace LemonadeStand_3DayStarter
         {
             bool validResponse = true;
             int chosenNumber = 0;
-            Console.WriteLine("Please enter a non-zero integer.");
+            Console.WriteLine("Please enter a non-negative integer.");
             do
             {
                 if (!validResponse || chosenNumber < 0)
@@ -61,6 +69,27 @@ namespace LemonadeStand_3DayStarter
         public void PrintCurrentRecipe()
         {
             Console.WriteLine("Makes " + numberOfCups + " cups.\n" + numberOfLemons + " lemons.\n" + numberOfSugarCubes + " sugar cubes\n" + numberOfIceCubes + " ice cubes");
+        }
+        public bool WouldYouLikeToAdjustRecipe()
+        {
+            Console.WriteLine("Would you like to adjust the recipe? (\"yes\" or \"no\")");
+            string response = "";
+            do
+            {
+                response = Console.ReadLine();
+                if (response.ToLower() != "yes" && response.ToLower() != "no")
+                {
+                    Console.WriteLine("Invalid response. Please type either \"yes\" or \"no\".");
+                }
+            } while (response.ToLower() != "yes" && response.ToLower() != "no");
+            if (response.ToLower() == "yes")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
