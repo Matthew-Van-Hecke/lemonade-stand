@@ -19,6 +19,38 @@ namespace LemonadeStand_3DayStarter
             wallet = new Wallet();
         }
 
+        internal Pitcher Pitcher
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal Wallet Wallet
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal Recipe Recipe
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal Inventory Inventory
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // member methods (CAN DO)
     }
 }

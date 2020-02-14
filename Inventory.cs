@@ -23,6 +23,38 @@ namespace LemonadeStand_3DayStarter
             cups = new List<Cup>();
         }
 
+        internal Lemon Lemon
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal SugarCube SugarCube
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal IceCube IceCube
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal Cup Cup
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // member methods (CAN DO)
         public void AddLemonsToInventory(int numberOfLemons)
         {
