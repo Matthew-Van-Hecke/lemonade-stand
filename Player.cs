@@ -13,8 +13,7 @@ namespace LemonadeStand_3DayStarter
         public Wallet wallet;
         //Hash this out, and 
         int sellabilityOfLemonade;
-        ////Eventually, move tasteOfRecipe to pitcher class.
-        //int tasteOfRecipe;
+        Recipe myRecipe;
 
         // constructor (SPAWNER)
         public Player()
@@ -22,9 +21,29 @@ namespace LemonadeStand_3DayStarter
             inventory = new Inventory();
             wallet = new Wallet();
             sellabilityOfLemonade = 15;
+            myRecipe = new Recipe();
         }
 
         // member methods (CAN DO)
+        public Pitcher MakePitcher()
+        {
+            int taste = (myRecipe.numberOfLemons + myRecipe.numberOfSugarCubes + myRecipe.numberOfIceCubes) / myRecipe.numberOfCups;
+            myRecipe.PrintCurrentRecipe();
+            if (myRecipe.WouldYouLikeToAdjustRecipe())
+            {
+                myRecipe.AdjustRecipe(inventory);
+                myRecipe.PrintCurrentRecipe();
+            }
+            RemoveItemsFromInventory();
+            return new Pitcher(myRecipe.numberOfCups, taste);
+        }
+        public void RemoveItemsFromInventory()
+        {
+            inventory.lemons.RemoveRange(0, myRecipe.numberOfLemons);
+            inventory.sugarCubes.RemoveRange(0, myRecipe.numberOfSugarCubes);
+            inventory.iceCubes.RemoveRange(0, myRecipe.numberOfIceCubes);
+            inventory.cups.RemoveRange(0, myRecipe.numberOfCups);
+        }
         //private void CalculateSellability()
         //{
         //    sellabilityOfLemonade = tasteOfRecipe * popularity;

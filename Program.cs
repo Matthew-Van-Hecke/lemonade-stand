@@ -11,8 +11,9 @@ namespace LemonadeStand_3DayStarter
         static void Main(string[] args)
         {
             Recipe recipe = new Recipe();
+            Player player = new Player();
             Pitcher pitcher;
-            pitcher = recipe.MakePitcher();
+            pitcher = player.MakePitcher();
             Console.WriteLine("Pitcher contains " + pitcher.numberOfCupsRemaining + " cups.");
             Console.ReadLine();
         }
