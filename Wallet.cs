@@ -9,8 +9,8 @@ namespace LemonadeStand_3DayStarter
     class Wallet
     {
         private double money;
-        public double totalExpenses;
-        public double totalProfit;
+        private double totalExpenses;
+        private double totalProfit;
 
         // property - TBD
         public double Money

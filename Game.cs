@@ -40,18 +40,18 @@ namespace LemonadeStand_3DayStarter
             //Repeat for next day.
             //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
         }
-        public bool WillBuy(Customer customer)
+        private bool WillBuy(Customer customer)
         {
             double differenceOfTaste;
-            if (currentPitcher.taste >= customer.tasteConstant)
+            if (currentPitcher.Taste >= customer.TasteConstant)
             {
-                differenceOfTaste = currentPitcher.taste - customer.tasteConstant;
+                differenceOfTaste = currentPitcher.Taste - customer.TasteConstant;
             }
             else
             {
-                differenceOfTaste = customer.tasteConstant - currentPitcher.taste;
+                differenceOfTaste = customer.TasteConstant - currentPitcher.Taste;
             }
-            double abilityToSell = days[currentDay].weatherValue * customer.thirst - currentPitcher.pricePerCup - differenceOfTaste;
+            double abilityToSell = days[currentDay].WeatherValue * customer.Thirst - currentPitcher.PricePerCup - differenceOfTaste;
             if (abilityToSell > 0)
             {
                 return true;

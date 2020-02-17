@@ -9,10 +9,22 @@ namespace LemonadeStand_3DayStarter
     class Weather
     {
         //Member Variables
-        public int temperature;
-        public List<string> conditions;
+        private int temperature;
+        public int Temperature
+        {
+            get { return temperature; }
+        }
+        private List<string> conditions;
+        public List<string> Conditions
+        {
+            get { return conditions; }
+        }
+        private string currentCondition;
+        public string CurrentCondition
+        {
+            get { return currentCondition; }
+        }
         Random random;
-        public string currentCondition;
         //Constructor
         public Weather(Random random)
         {

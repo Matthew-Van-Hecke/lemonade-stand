@@ -9,8 +9,16 @@ namespace LemonadeStand_3DayStarter
     class Player
     {
         // member variables (HAS A)
-        public Inventory inventory;
-        public Wallet wallet;
+        private Inventory inventory;
+        public Inventory Inventory
+        {
+            get { return inventory; }
+        }
+        private Wallet wallet;
+        public Wallet Wallet
+        {
+            get { return wallet; }
+        }
 
         Recipe myRecipe;
 
@@ -27,6 +35,10 @@ namespace LemonadeStand_3DayStarter
         public Pitcher MakePitcher()
         {
             int taste = 0;
+            int cups;
+            int lemons;
+            int sugar;
+            int ice;
             myRecipe.PrintCurrentRecipe();
             if (myRecipe.WouldYouLikeToAdjustRecipe())
             {
@@ -34,35 +46,51 @@ namespace LemonadeStand_3DayStarter
                 myRecipe.PrintCurrentRecipe();
             }
             //This portion is functional but could use some cleaning up later.
-            if (myRecipe.numberOfCups > inventory.cups.Count)
+            if (myRecipe.NumberOfCups > inventory.Cups.Count)
             {
-                myRecipe.numberOfCups = inventory.cups.Count;
+                cups = inventory.Cups.Count;
             }
-            if (myRecipe.numberOfLemons > inventory.lemons.Count)
+            else
             {
-                myRecipe.numberOfLemons = inventory.lemons.Count;
+                cups = myRecipe.NumberOfCups;
             }
-            if (myRecipe.numberOfSugarCubes > inventory.sugarCubes.Count)
+            if (myRecipe.NumberOfLemons > inventory.Lemons.Count)
             {
-                myRecipe.numberOfSugarCubes = inventory.sugarCubes.Count;
+                lemons = inventory.Lemons.Count;
             }
-            if (myRecipe.numberOfIceCubes > inventory.iceCubes.Count)
+            else
             {
-                myRecipe.numberOfIceCubes = inventory.iceCubes.Count;
+                lemons = myRecipe.NumberOfLemons;
             }
-            if (myRecipe.numberOfCups > 0)
+            if (myRecipe.NumberOfSugarCubes > inventory.SugarCubes.Count)
             {
-                taste = (myRecipe.numberOfLemons * myRecipe.numberOfSugarCubes + myRecipe.numberOfIceCubes) / myRecipe.numberOfCups;
+                sugar = inventory.SugarCubes.Count;
             }
-            RemoveItemsFromInventory();
-            return new Pitcher(myRecipe.numberOfCups, taste);
+            else
+            {
+                sugar = myRecipe.NumberOfSugarCubes;
+            }
+            if (myRecipe.NumberOfIceCubes > inventory.IceCubes.Count)
+            {
+                ice = inventory.IceCubes.Count;
+            }
+            else
+            {
+                ice = myRecipe.NumberOfIceCubes;
+            }
+            if (cups > 0)
+            {
+                taste = (lemons * sugar + ice) / cups;
+            }
+            RemoveItemsFromInventory(lemons, sugar, ice, cups);
+            return new Pitcher(cups, taste);
         }
-        public void RemoveItemsFromInventory()
+        public void RemoveItemsFromInventory(int lemons, int sugar, int ice, int cups)
         {
-            inventory.lemons.RemoveRange(0, myRecipe.numberOfLemons);
-            inventory.sugarCubes.RemoveRange(0, myRecipe.numberOfSugarCubes);
-            inventory.iceCubes.RemoveRange(0, myRecipe.numberOfIceCubes);
-            inventory.cups.RemoveRange(0, myRecipe.numberOfCups);
+            inventory.Lemons.RemoveRange(0, lemons);
+            inventory.SugarCubes.RemoveRange(0, sugar);
+            inventory.IceCubes.RemoveRange(0, ice);
+            inventory.Cups.RemoveRange(0, cups);
         }
 
     }

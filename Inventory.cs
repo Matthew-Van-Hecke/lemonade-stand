@@ -9,10 +9,26 @@ namespace LemonadeStand_3DayStarter
     class Inventory
     {
         // member variables (HAS A)
-        public List<Lemon> lemons;
-        public List<SugarCube> sugarCubes;
-        public List<IceCube> iceCubes;
-        public List<Cup> cups;
+        private List<Lemon> lemons;
+        public List<Lemon> Lemons
+        {
+            get { return lemons; }
+        }
+        private List<SugarCube> sugarCubes;
+        public List<SugarCube> SugarCubes
+        {
+            get { return sugarCubes; }
+        }
+        private List<IceCube> iceCubes;
+        public List<IceCube> IceCubes
+        {
+            get { return iceCubes; }
+        }
+        private List<Cup> cups;
+        public List<Cup> Cups
+        {
+            get { return cups; }
+        }
 
         // constructor (SPAWNER)
         public Inventory()

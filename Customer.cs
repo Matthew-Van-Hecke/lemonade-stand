@@ -9,14 +9,19 @@ namespace LemonadeStand_3DayStarter
     class Customer
     {
         //Member Variables
-        string name;
-        List<string> names;
-        public int thirst;
-        //Satisfaction will be added to or subtracted from depending on whether taste of lemonade is greater than, less than, or equal to tasteConstant.
-        public int tasteConstant;
-        Random random;
-        //If likelinessToBuy is greater than variable (based on weather, popularity of stand, recipe, and price), customer will buy lemonade
-        public int likelinessToBuy;
+        private string name;
+        private List<string> names;
+        private int thirst;
+        public int Thirst
+        {
+            get { return thirst; }
+        }
+        private int tasteConstant;
+        public int TasteConstant
+        {
+            get { return tasteConstant; }
+        }
+        private Random random;
         //Constructor
         public Customer(Random random)
         {
@@ -29,7 +34,7 @@ namespace LemonadeStand_3DayStarter
         //Member Methods
         public bool CustomerSatisfied(Pitcher pitcher)
         {
-            if (pitcher.taste <= tasteConstant + 2 && pitcher.taste >= tasteConstant - 2)
+            if (pitcher.Taste <= tasteConstant + 2 && pitcher.Taste >= tasteConstant - 2)
             {
                 return true;
             }

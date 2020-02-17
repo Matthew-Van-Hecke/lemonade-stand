@@ -9,9 +9,17 @@ namespace LemonadeStand_3DayStarter
     class Pitcher
     {
         //Member Variables
-        public int numberOfCupsRemaining;
-        public int taste;
-        public double pricePerCup;
+        private int numberOfCupsRemaining;
+        private int taste;
+        public int Taste
+        {
+            get { return taste; }
+        }
+        private double pricePerCup;
+        public double PricePerCup
+        {
+            get { return pricePerCup; }
+        }
         //Constructor
         public Pitcher(int numberOfCups, int taste)
         {

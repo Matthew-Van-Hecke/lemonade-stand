@@ -9,10 +9,26 @@ namespace LemonadeStand_3DayStarter
     class Recipe
     {
         //Member Variables
-        public int numberOfCups;
-        public int numberOfLemons;
-        public int numberOfSugarCubes;
-        public int numberOfIceCubes;
+        private int numberOfCups;
+        public int NumberOfCups
+        {
+            get { return numberOfCups; }
+        }
+        private int numberOfLemons;
+        public int NumberOfLemons
+        {
+            get { return numberOfLemons; }
+        }
+        private int numberOfSugarCubes;
+        public int NumberOfSugarCubes
+        {
+            get { return numberOfSugarCubes; }
+        }
+        private int numberOfIceCubes;
+        public int NumberOfIceCubes
+        {
+            get { return numberOfIceCubes; }
+        }
         //Constructor
         public Recipe()
         {
@@ -28,16 +44,16 @@ namespace LemonadeStand_3DayStarter
         public void AdjustRecipe(Inventory inventory)
         {
             Console.WriteLine("Note: if the selected quantity of an item is greater than the amount you have left in your inventory, the rest of that item from your inventory will go into the batch.\n");
-            Console.WriteLine("Current size of recipe: " + numberOfCups + " cups.\nYou currently have " + inventory.cups.Count + " cups available to use.");
+            Console.WriteLine("Current size of recipe: " + numberOfCups + " cups.\nYou currently have " + inventory.Cups.Count + " cups available to use.");
             Console.WriteLine("How big would you like to make it?");
             numberOfCups = GetValidIntFromUserInput();
-            Console.WriteLine("Current number of lemons in recipe: " + numberOfLemons + "\nYou currently have " + inventory.lemons.Count + " lemons available to use.");
+            Console.WriteLine("Current number of lemons in recipe: " + numberOfLemons + "\nYou currently have " + inventory.Lemons.Count + " lemons available to use.");
             Console.WriteLine("How many would you like to include in your recipe?");
             numberOfLemons = GetValidIntFromUserInput();
-            Console.WriteLine("Current quantity of sugar in recipe: " + numberOfSugarCubes + " cubes.\nYou currently have " + inventory.sugarCubes.Count + " sugar cubes available to use.");
+            Console.WriteLine("Current quantity of sugar in recipe: " + numberOfSugarCubes + " cubes.\nYou currently have " + inventory.SugarCubes.Count + " sugar cubes available to use.");
             Console.WriteLine("How many would you like to include?");
             numberOfSugarCubes = GetValidIntFromUserInput();
-            Console.WriteLine("Current number of ice cubes in recipe: " + numberOfIceCubes + "\nYou currently have " + inventory.iceCubes.Count + " available to use.");
+            Console.WriteLine("Current number of ice cubes in recipe: " + numberOfIceCubes + "\nYou currently have " + inventory.IceCubes.Count + " available to use.");
             Console.WriteLine("How many would you like to include?");
             numberOfIceCubes = GetValidIntFromUserInput();
         }
