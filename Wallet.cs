@@ -9,6 +9,8 @@ namespace LemonadeStand_3DayStarter
     class Wallet
     {
         private double money;
+        public double totalExpenses;
+        public double totalProfit;
 
         // property - TBD
         public double Money
@@ -27,6 +29,14 @@ namespace LemonadeStand_3DayStarter
         public void PayMoneyForItems(double transactionAmount)
         {
             money -= transactionAmount;
+        }
+        public void UpdateTotalExpenses(double expenses)
+        {
+            totalExpenses -= expenses;
+        }
+        public void UpdateTotalProfit(double profit)
+        {
+            totalProfit += profit;
         }
     }
 }
