@@ -34,6 +34,7 @@ namespace LemonadeStand_3DayStarter
                 //At the end of the day, print how many cups were sold out of how many possible.
                 //Print remaining inventory.
                 //Maybe give some sort of popularity indicator.
+                //At the end of the day, all remaining ice cubes in the inventory melt.
             //Repeat for next day.
             //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
         }

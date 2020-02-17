@@ -59,5 +59,9 @@ namespace LemonadeStand_3DayStarter
                 cups.Add(cup);
             }
         }
+        public void PrintInventory()
+        {
+            Console.WriteLine($"You currently have {cups.Count} cups, {lemons.Count} lemons, {sugarCubes.Count} sugar cubes, and {iceCubes.Count} ice cubes in your inventory");
+        }
     }
 }
