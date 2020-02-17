@@ -11,10 +11,9 @@ namespace LemonadeStand_3DayStarter
         //Member Variables
         string name;
         List<string> names;
-        int thirst;
+        public int thirst;
         //Satisfaction will be added to or subtracted from depending on whether taste of lemonade is greater than, less than, or equal to tasteConstant.
-        int satisfaction;
-        int tasteConstant;
+        public int tasteConstant;
         Random random;
         //If likelinessToBuy is greater than variable (based on weather, popularity of stand, recipe, and price), customer will buy lemonade
         public int likelinessToBuy;
@@ -24,16 +23,20 @@ namespace LemonadeStand_3DayStarter
             this.random = random;
             names = new List<string>() { "George", "John", "Thomas", "James", "Andrew", "Millard", "Franklin" };
             name = names[random.Next(names.Count)];
-            tasteConstant = random.Next(1, 10);
+            tasteConstant = random.Next(4, 7);
             thirst = random.Next(1, 3);
-            satisfaction = 10;
-            likelinessToBuy = thirst * satisfaction;
         }
         //Member Methods
-        public bool CustomerSatisfied()
+        public bool CustomerSatisfied(Pitcher pitcher)
         {
-            //if taste of lemonade is less than taste constant, decrement satisfaction, if greater, increment it, if same, same.
-            return true;
+            if (pitcher.taste <= tasteConstant + 2 && pitcher.taste >= tasteConstant - 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

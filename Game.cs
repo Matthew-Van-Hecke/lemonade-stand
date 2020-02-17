@@ -11,8 +11,8 @@ namespace LemonadeStand_3DayStarter
         //Member Variables
         Player player;
         List<Day> days;
+        Pitcher currentPitcher;
         int currentDay;
-        int sellabilityOfLemonade;
         
         Random masterRandom;
         //Constructor
@@ -22,7 +22,6 @@ namespace LemonadeStand_3DayStarter
             player = new Player();
             days = new List<Day>() { new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom) };
             currentDay = 0;
-            sellabilityOfLemonade = 0;
         }
         //Member Methods
         public void PlayGame()
@@ -33,6 +32,7 @@ namespace LemonadeStand_3DayStarter
                 //Give player the opportunity to choose the recipe for their lemonade, and how much of it they would like to make.
                 //Begin work day.
                     //Have customers walk by one at a time and, if the math works out, have the customer buy.
+                    //Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
                 //At the end of the day, print how many cups were sold out of how many possible.
                 //Print remaining inventory.
                 //Maybe give some sort of popularity indicator.
@@ -40,9 +40,26 @@ namespace LemonadeStand_3DayStarter
             //Repeat for next day.
             //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
         }
-        public bool CalculateSellability(Customer customer)
+        public bool WillBuy(Customer customer)
         {
-            int impedimentsToBuying = days[currentDay].weatherAntiValue * price
+            double differenceOfTaste;
+            if (currentPitcher.taste >= customer.tasteConstant)
+            {
+                differenceOfTaste = currentPitcher.taste - customer.tasteConstant;
+            }
+            else
+            {
+                differenceOfTaste = customer.tasteConstant - currentPitcher.taste;
+            }
+            double abilityToSell = days[currentDay].weatherValue * customer.thirst - currentPitcher.pricePerCup - differenceOfTaste;
+            if (abilityToSell > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

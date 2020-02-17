@@ -9,14 +9,16 @@ namespace LemonadeStand_3DayStarter
     class Day
     {
         public Weather weather;
-        public int weatherAntiValue;
+        public int weatherValue;
         public List<Customer> customers;
+        public int numberOfCupsSoldToday;
 
         public Day(Random random)
         {
             weather = new Weather(random);
             customers = new List<Customer>() { new Customer(random), new Customer(random), new Customer(random), new Customer(random) };
-            weatherAntiValue = 300/(weather.temperature * (weather.conditions.IndexOf(weather.currentCondition) + 1));
+            weatherValue = (weather.temperature * (weather.conditions.IndexOf(weather.currentCondition) + 1)/10);
+            numberOfCupsSoldToday = 0;
         }
         //Member Methods
 
