@@ -32,31 +32,15 @@ namespace LemonadeStand_3DayStarter
             Console.WriteLine("Current size of recipe: " + numberOfCups + " cups.\nYou currently have " + inventory.cups.Count + " cups available to use.");
             Console.WriteLine("How big would you like to make it?");
             numberOfCups = GetValidIntFromUserInput();
-            if (numberOfCups > inventory.cups.Count)
-            {
-                numberOfCups = inventory.cups.Count;
-            }
             Console.WriteLine("Current number of lemons in recipe: " + numberOfLemons + "\nYou currently have " + inventory.lemons.Count + " lemons available to use.");
             Console.WriteLine("How many would you like to include in your recipe?");
             numberOfLemons = GetValidIntFromUserInput();
-            if (numberOfLemons > inventory.lemons.Count)
-            {
-                numberOfLemons = inventory.lemons.Count;
-            }
             Console.WriteLine("Current quantity of sugar in recipe: " + numberOfSugarCubes + " cubes.\nYou currently have " + inventory.sugarCubes.Count + " sugar cubes available to use.");
             Console.WriteLine("How many would you like to include?");
             numberOfSugarCubes = GetValidIntFromUserInput();
-            if (numberOfSugarCubes > inventory.sugarCubes.Count)
-            {
-                numberOfSugarCubes = inventory.sugarCubes.Count;
-            }
             Console.WriteLine("Current number of ice cubes in recipe: " + numberOfIceCubes + "\nYou currently have " + inventory.iceCubes.Count + " available to use.");
             Console.WriteLine("How many would you like to include?");
             numberOfIceCubes = GetValidIntFromUserInput();
-            if (numberOfIceCubes > inventory.iceCubes.Count)
-            {
-                numberOfIceCubes = inventory.iceCubes.Count;
-            }
         }
         public int GetValidIntFromUserInput()
         {

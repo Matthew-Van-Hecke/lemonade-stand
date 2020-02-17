@@ -27,12 +27,32 @@ namespace LemonadeStand_3DayStarter
         // member methods (CAN DO)
         public Pitcher MakePitcher()
         {
-            int taste = (myRecipe.numberOfLemons + myRecipe.numberOfSugarCubes + myRecipe.numberOfIceCubes) / myRecipe.numberOfCups;
+            int taste = 0;
             myRecipe.PrintCurrentRecipe();
             if (myRecipe.WouldYouLikeToAdjustRecipe())
             {
                 myRecipe.AdjustRecipe(inventory);
                 myRecipe.PrintCurrentRecipe();
+            }
+            if (myRecipe.numberOfCups > inventory.cups.Count)
+            {
+                myRecipe.numberOfCups = inventory.cups.Count;
+            }
+            if (myRecipe.numberOfLemons > inventory.lemons.Count)
+            {
+                myRecipe.numberOfLemons = inventory.lemons.Count;
+            }
+            if (myRecipe.numberOfSugarCubes > inventory.sugarCubes.Count)
+            {
+                myRecipe.numberOfSugarCubes = inventory.sugarCubes.Count;
+            }
+            if (myRecipe.numberOfIceCubes > inventory.iceCubes.Count)
+            {
+                myRecipe.numberOfIceCubes = inventory.iceCubes.Count;
+            }
+            if (myRecipe.numberOfCups > 0)
+            {
+                taste = (myRecipe.numberOfLemons + myRecipe.numberOfSugarCubes + myRecipe.numberOfIceCubes) / myRecipe.numberOfCups;
             }
             RemoveItemsFromInventory();
             return new Pitcher(myRecipe.numberOfCups, taste);
