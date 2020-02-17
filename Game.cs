@@ -10,6 +10,7 @@ namespace LemonadeStand_3DayStarter
     {
         //Member Variables
         Player player;
+        Store store;
         List<Day> days;
         Pitcher currentPitcher;
         int currentDay;
@@ -20,6 +21,7 @@ namespace LemonadeStand_3DayStarter
         {
             masterRandom = new Random();
             player = new Player();
+            store = new Store();
             days = new List<Day>() { new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom) };
             currentDay = 0;
         }
@@ -27,18 +29,31 @@ namespace LemonadeStand_3DayStarter
         public void PlayGame()
         {
             //Loop through for each day.
-                //Display day, weather, current inventory, and amount of money in wallet.
-                //Give player the opportunity to purchase items from the store.
-                //Give player the opportunity to choose the recipe for their lemonade, and how much of it they would like to make.
-                //Begin work day.
-                    //Have customers walk by one at a time and, if the math works out, have the customer buy.
-                    //Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
-                //At the end of the day, print how many cups were sold out of how many possible.
-                //Print remaining inventory.
-                //Maybe give some sort of popularity indicator.
-                //At the end of the day, all remaining ice cubes in the inventory melt.
+                PlayDay();
             //Repeat for next day.
             //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
+        }
+        private void PlayDay()
+        {
+            //Display day, weather, current inventory, and amount of money in wallet.
+            DisplayStatsAtStartOfDay();
+            //Give player the opportunity to purchase items from the store.
+            GoShopping();
+            //Give player the opportunity to choose the recipe for their lemonade, and how much of it they would like to make.
+            //Begin work day.
+            //Have customers walk by one at a time and, if the math works out, have the customer buy.
+            //Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
+            //At the end of the day, print how many cups were sold out of how many possible.
+            //Print remaining inventory.
+            //Maybe give some sort of popularity indicator.
+            //At the end of the day, all remaining ice cubes in the inventory melt.
+        }
+        private void DisplayStatsAtStartOfDay()
+        {
+            Console.WriteLine("Day: " + (currentDay + 1));
+            Console.WriteLine(days[currentDay].Weather.Temperature + " degrees, and " + days[currentDay].Weather.CurrentCondition + ".");
+            player.Inventory.PrintInventory();
+            Console.WriteLine("You have $" + player.Wallet.Money + " in your wallet.");
         }
         private bool WillBuy(Customer customer)
         {
@@ -60,6 +75,17 @@ namespace LemonadeStand_3DayStarter
             {
                 return false;
             }
+        }
+        private void GoShopping()
+        {
+            Console.WriteLine("You have " + player.Inventory.Cups.Count + " cups.");
+            store.SellCups(player);
+            Console.WriteLine("You have " + player.Inventory.Lemons.Count + " lemons.");
+            store.SellLemons(player);
+            Console.WriteLine("You have " + player.Inventory.SugarCubes.Count + " sugar cubes.");
+            store.SellSugarCubes(player);
+            Console.WriteLine("You have " + player.Inventory.IceCubes.Count + " ice cubes.");
+            store.SellIceCubes(player);
         }
     }
 }

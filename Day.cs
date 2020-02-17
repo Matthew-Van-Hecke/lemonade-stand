@@ -9,6 +9,10 @@ namespace LemonadeStand_3DayStarter
     class Day
     {
         private Weather weather;
+        public Weather Weather
+        {
+            get { return weather; }
+        }
         private int weatherValue;
         public int WeatherValue
         {

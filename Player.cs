@@ -19,7 +19,6 @@ namespace LemonadeStand_3DayStarter
         {
             get { return wallet; }
         }
-
         Recipe myRecipe;
 
         // constructor (SPAWNER)
@@ -27,7 +26,6 @@ namespace LemonadeStand_3DayStarter
         {
             inventory = new Inventory();
             wallet = new Wallet();
-
             myRecipe = new Recipe();
         }
 
@@ -92,6 +90,5 @@ namespace LemonadeStand_3DayStarter
             inventory.IceCubes.RemoveRange(0, ice);
             inventory.Cups.RemoveRange(0, cups);
         }
-
     }
 }
