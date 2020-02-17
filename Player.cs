@@ -34,6 +34,7 @@ namespace LemonadeStand_3DayStarter
                 myRecipe.AdjustRecipe(inventory);
                 myRecipe.PrintCurrentRecipe();
             }
+            //This portion is functional but could use some cleaning up later.
             if (myRecipe.numberOfCups > inventory.cups.Count)
             {
                 myRecipe.numberOfCups = inventory.cups.Count;
