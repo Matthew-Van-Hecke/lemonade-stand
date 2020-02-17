@@ -12,6 +12,7 @@ namespace LemonadeStand_3DayStarter
         Player player;
         List<Day> days;
         int currentDay;
+        int sellabilityOfLemonade;
         
         Random masterRandom;
         //Constructor
@@ -21,6 +22,7 @@ namespace LemonadeStand_3DayStarter
             player = new Player();
             days = new List<Day>() { new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom) };
             currentDay = 0;
+            sellabilityOfLemonade = 0;
         }
         //Member Methods
         public void PlayGame()
@@ -37,6 +39,10 @@ namespace LemonadeStand_3DayStarter
                 //At the end of the day, all remaining ice cubes in the inventory melt.
             //Repeat for next day.
             //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
+        }
+        public bool CalculateSellability(Customer customer)
+        {
+            int impedimentsToBuying = days[currentDay].weatherAntiValue * price
         }
     }
 }

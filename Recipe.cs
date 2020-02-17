@@ -13,7 +13,6 @@ namespace LemonadeStand_3DayStarter
         public int numberOfLemons;
         public int numberOfSugarCubes;
         public int numberOfIceCubes;
-        public int taste;
         //Constructor
         public Recipe()
         {

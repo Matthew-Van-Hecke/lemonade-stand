@@ -11,8 +11,7 @@ namespace LemonadeStand_3DayStarter
         // member variables (HAS A)
         public Inventory inventory;
         public Wallet wallet;
-        //Hash this out, and 
-        int sellabilityOfLemonade;
+
         Recipe myRecipe;
 
         // constructor (SPAWNER)
@@ -20,7 +19,7 @@ namespace LemonadeStand_3DayStarter
         {
             inventory = new Inventory();
             wallet = new Wallet();
-            sellabilityOfLemonade = 15;
+
             myRecipe = new Recipe();
         }
 
@@ -53,7 +52,7 @@ namespace LemonadeStand_3DayStarter
             }
             if (myRecipe.numberOfCups > 0)
             {
-                taste = (myRecipe.numberOfLemons + myRecipe.numberOfSugarCubes + myRecipe.numberOfIceCubes) / myRecipe.numberOfCups;
+                taste = (myRecipe.numberOfLemons * myRecipe.numberOfSugarCubes + myRecipe.numberOfIceCubes) / myRecipe.numberOfCups;
             }
             RemoveItemsFromInventory();
             return new Pitcher(myRecipe.numberOfCups, taste);
@@ -65,9 +64,6 @@ namespace LemonadeStand_3DayStarter
             inventory.iceCubes.RemoveRange(0, myRecipe.numberOfIceCubes);
             inventory.cups.RemoveRange(0, myRecipe.numberOfCups);
         }
-        //private void CalculateSellability()
-        //{
-        //    sellabilityOfLemonade = tasteOfRecipe * popularity;
-        //}
+
     }
 }
