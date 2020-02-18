@@ -74,7 +74,7 @@ namespace LemonadeStand_3DayStarter
         }
         public void PrintCurrentRecipe()
         {
-            Console.WriteLine("Makes " + numberOfCups + " cups.\n" + numberOfLemons + " lemons.\n" + numberOfSugarCubes + " sugar cubes\n" + numberOfIceCubes + " ice cubes");
+            Console.WriteLine("\nMakes " + numberOfCups + " cups.\n" + numberOfLemons + " lemons.\n" + numberOfSugarCubes + " sugar cubes\n" + numberOfIceCubes + " ice cubes");
         }
         public bool WouldYouLikeToAdjustRecipe()
         {

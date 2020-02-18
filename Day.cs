@@ -32,6 +32,15 @@ namespace LemonadeStand_3DayStarter
             weatherValue = (weather.Temperature * (weather.Conditions.IndexOf(weather.CurrentCondition) + 1)/10);
             numberOfCupsSoldToday = 0;
         }
+        public Day()
+        {
+
+        }
+        public void SetWeatherValue()
+        {
+            weatherValue = (weather.Temperature * (weather.Conditions.IndexOf(weather.CurrentCondition) + 1) / 10);
+        }
+       
         //Member Methods
 
     }

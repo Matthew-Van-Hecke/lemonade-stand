@@ -49,10 +49,12 @@ namespace LemonadeStand_3DayStarter
             MeltIce();
             player.Inventory.PrintInventory();
             currentDay++;
+            cupsSoldToday = 0;
+            incomeToday = 0;
         }
         private void DisplayStatsAtStartOfDay()
         {
-            Console.WriteLine("Day: " + (currentDay + 1));
+            Console.WriteLine("\nDay: " + (currentDay + 1));
             Console.WriteLine(days[currentDay].Weather.Temperature + " degrees, and " + days[currentDay].Weather.CurrentCondition + ".");
             player.Inventory.PrintInventory();
             Console.WriteLine("You have $" + player.Wallet.Money + " in your wallet.");
@@ -80,14 +82,15 @@ namespace LemonadeStand_3DayStarter
         }
         private void GoShopping()
         {
-            Console.WriteLine("You have " + player.Inventory.Cups.Count + " cups.");
+            Console.WriteLine("\nYou have " + player.Inventory.Cups.Count + " cups in your inventory. Cups cost $" + store.PricePerCup + " each.");
             store.SellCups(player);
-            Console.WriteLine("You have " + player.Inventory.Lemons.Count + " lemons.");
+            Console.WriteLine("\nYou have " + player.Inventory.Lemons.Count + " lemons in your inventory. Lemons cost $" + store.PricePerLemon + " each.");
             store.SellLemons(player);
-            Console.WriteLine("You have " + player.Inventory.SugarCubes.Count + " sugar cubes.");
+            Console.WriteLine("\nYou have " + player.Inventory.SugarCubes.Count + " sugar cubes in your inventory. Sugar cubes cost $" + store.PricePerSugarCube + " each.");
             store.SellSugarCubes(player);
-            Console.WriteLine("You have " + player.Inventory.IceCubes.Count + " ice cubes.");
+            Console.WriteLine("\nYou have " + player.Inventory.IceCubes.Count + " ice cubes in your inventory. Ice cubes cost $" + store.PricePerIceCube + " each.");
             store.SellIceCubes(player);
+            Console.WriteLine("You have $" + player.Wallet.Money + " remaining in your wallet.");
         }
         private void PlayBusinessHours()
         {

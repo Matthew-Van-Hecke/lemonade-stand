@@ -31,6 +31,10 @@ namespace LemonadeStand_3DayStarter
             tasteConstant = random.Next(4, 7);
             thirst = random.Next(1, 3);
         }
+        public int RandomNumberGenerator(int min, int max)
+        {
+            return random.Next(min, max);
+        }
         //Member Methods
         //This method is not currently used anywhere, but will be called when I add functionality for changing popularity of the lemonade stand.
         public bool CustomerSatisfied(Pitcher pitcher)
