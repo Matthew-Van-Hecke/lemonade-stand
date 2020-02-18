@@ -40,9 +40,11 @@ namespace LemonadeStand_3DayStarter
             //Give player the opportunity to purchase items from the store.
             GoShopping();
             //Give player the opportunity to choose the recipe for their lemonade, and how much of it they would like to make.
+            player.MakePitcher();
             //Begin work day.
+            PlayBusinessHours();
             //Have customers walk by one at a time and, if the math works out, have the customer buy.
-            //Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
+            ////Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
             //At the end of the day, print how many cups were sold out of how many possible.
             //Print remaining inventory.
             //Maybe give some sort of popularity indicator.
@@ -86,6 +88,27 @@ namespace LemonadeStand_3DayStarter
             store.SellSugarCubes(player);
             Console.WriteLine("You have " + player.Inventory.IceCubes.Count + " ice cubes.");
             store.SellIceCubes(player);
+        }
+        private void PlayBusinessHours()
+        {
+            Customer customer;
+            for (int i = 0; i < days[currentDay].Customers.Count; i++)
+            {
+                if (currentPitcher.NumberOfCupsRemaining <= 0)
+                {
+                    currentPitcher = player.MakePitcher();
+                }
+                customer = days[currentDay].Customers[i];
+                if (WillBuy(customer))
+                {
+                    SellCupOfLemonade();
+                }
+            }
+        }
+        private void SellCupOfLemonade()
+        {
+            player.Wallet.Money += currentPitcher.PricePerCup;
+            currentPitcher.NumberOfCupsRemaining--;
         }
     }
 }

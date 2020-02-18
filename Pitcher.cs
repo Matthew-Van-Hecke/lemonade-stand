@@ -10,6 +10,11 @@ namespace LemonadeStand_3DayStarter
     {
         //Member Variables
         private int numberOfCupsRemaining;
+        public int NumberOfCupsRemaining
+        {
+            get { return numberOfCupsRemaining; }
+            set { numberOfCupsRemaining = value; }
+        }
         private int taste;
         public int Taste
         {

@@ -32,6 +32,7 @@ namespace LemonadeStand_3DayStarter
             thirst = random.Next(1, 3);
         }
         //Member Methods
+        //This method is not currently used anywhere, but will be called when I add functionality for changing popularity of the lemonade stand.
         public bool CustomerSatisfied(Pitcher pitcher)
         {
             if (pitcher.Taste <= tasteConstant + 2 && pitcher.Taste >= tasteConstant - 2)

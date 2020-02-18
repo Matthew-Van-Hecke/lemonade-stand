@@ -19,6 +19,10 @@ namespace LemonadeStand_3DayStarter
             get { return weatherValue; }
         }
         private List<Customer> customers;
+        public List<Customer> Customers
+        {
+            get { return customers; }
+        }
         private int numberOfCupsSoldToday;
 
         public Day(Random random)
