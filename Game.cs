@@ -104,6 +104,11 @@ namespace LemonadeStand_3DayStarter
                 customer = days[currentDay].Customers[i];
                 if (WillBuy(customer))
                 {
+                    if (player.Inventory.Cups.Count <= 0)
+                    {
+                        Console.WriteLine("You ran out of cups.");
+                        break;
+                    }
                     SellCupOfLemonade();
                 }
             }

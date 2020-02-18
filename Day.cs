@@ -24,11 +24,14 @@ namespace LemonadeStand_3DayStarter
             get { return customers; }
         }
         private int numberOfCupsSoldToday;
+        private Random random;
 
         public Day(Random random)
         {
+            this.random = random;
             weather = new Weather(random);
-            customers = new List<Customer>() { new Customer(random), new Customer(random), new Customer(random), new Customer(random) };
+            customers = new List<Customer>();
+            PopulateCustomerList();
             SetWeatherValue();
             numberOfCupsSoldToday = 0;
         }
@@ -37,7 +40,13 @@ namespace LemonadeStand_3DayStarter
         {
             weatherValue = (weather.Temperature * (weather.Conditions.IndexOf(weather.CurrentCondition) + 1) / 10);
         }
-
-
+        private void PopulateCustomerList()
+        {
+            int numberOfCustomers = random.Next(90, 110);
+            for (int i = 0; i < numberOfCustomers; i++)
+            {
+                customers.Add(new Customer(random));
+            }
+        }
     }
 }
