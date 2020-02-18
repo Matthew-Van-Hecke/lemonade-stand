@@ -9,10 +9,6 @@ namespace LemonadeStand_3DayStarter
     class Wallet
     {
         private double money;
-        private double totalExpenses;
-        private double totalProfit;
-
-        // property - TBD
         public double Money
         {
             get
@@ -23,6 +19,16 @@ namespace LemonadeStand_3DayStarter
             {
                 money = value;
             }
+        }
+        private double totalExpenses;
+        public double TotalExpenses
+        {
+            get { return totalExpenses; }
+        }
+        private double totalIncome;
+        public double TotalIncome
+        {
+            get { return totalIncome; }
         }
 
         public Wallet()
@@ -38,9 +44,9 @@ namespace LemonadeStand_3DayStarter
         {
             totalExpenses -= expenses;
         }
-        public void UpdateTotalProfit(double profit)
+        public void UpdateTotalIncome(double income)
         {
-            totalProfit += profit;
+            totalIncome += income;
         }
     }
 }

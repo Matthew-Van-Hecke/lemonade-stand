@@ -31,7 +31,10 @@ namespace LemonadeStand_3DayStarter
         public void PlayGame()
         {
             //Loop through for each day.
+            while (currentDay < 7)
+            {
                 PlayDay();
+            }
             //Repeat for next day.
             //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
         }
@@ -52,8 +55,9 @@ namespace LemonadeStand_3DayStarter
             //At the end of the day, all remaining ice cubes in the inventory melt.
             MeltIce();
             //Print remaining inventory.
-
-            //Maybe give some sort of popularity indicator.
+            player.Inventory.PrintInventory();
+            //Increment currentDay
+            currentDay++;
         }
         private void DisplayStatsAtStartOfDay()
         {
