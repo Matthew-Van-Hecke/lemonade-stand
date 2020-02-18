@@ -15,7 +15,7 @@ namespace LemonadeStand_3DayStarter
         Pitcher currentPitcher;
         int currentDay;
         int cupsSoldToday;
-        int incomeToday;
+        double incomeToday;
         
         Random masterRandom;
         //Constructor
@@ -40,23 +40,14 @@ namespace LemonadeStand_3DayStarter
         }
         private void PlayDay()
         {
-            //Display day, weather, current inventory, and amount of money in wallet.
             DisplayStatsAtStartOfDay();
-            //Give player the opportunity to purchase items from the store.
             GoShopping();
-            //Give player the opportunity to choose the recipe for their lemonade, and how much of it they would like to make.
             currentPitcher = player.MakePitcher();
-            //Begin work day.
             PlayBusinessHours();
-            //Have customers walk by one at a time and, if the math works out, have the customer buy.
             ////Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
-            //At the end of the day, print how many cups were sold out of how many possible.
             DisplayStatsAtEndOfDay();
-            //At the end of the day, all remaining ice cubes in the inventory melt.
             MeltIce();
-            //Print remaining inventory.
             player.Inventory.PrintInventory();
-            //Increment currentDay
             currentDay++;
         }
         private void DisplayStatsAtStartOfDay()
@@ -116,8 +107,11 @@ namespace LemonadeStand_3DayStarter
         }
         private void SellCupOfLemonade()
         {
+            currentPitcher.PourCup();
             player.Wallet.Money += currentPitcher.PricePerCup;
             currentPitcher.NumberOfCupsRemaining--;
+            cupsSoldToday++;
+            incomeToday += currentPitcher.PricePerCup;
         }
         private void DisplayStatsAtEndOfDay()
         {

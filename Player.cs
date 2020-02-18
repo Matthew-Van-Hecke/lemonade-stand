@@ -33,7 +33,7 @@ namespace LemonadeStand_3DayStarter
         public Pitcher MakePitcher()
         {
             int taste = 0;
-            int cups;
+            int sizeOfBatch;
             int lemons;
             int sugar;
             int ice;
@@ -44,14 +44,7 @@ namespace LemonadeStand_3DayStarter
                 myRecipe.PrintCurrentRecipe();
             }
             //This portion is functional but could use some cleaning up later.
-            if (myRecipe.NumberOfCups > inventory.Cups.Count)
-            {
-                cups = inventory.Cups.Count;
-            }
-            else
-            {
-                cups = myRecipe.NumberOfCups;
-            }
+                sizeOfBatch = myRecipe.NumberOfCups;
             if (myRecipe.NumberOfLemons > inventory.Lemons.Count)
             {
                 lemons = inventory.Lemons.Count;
@@ -76,19 +69,18 @@ namespace LemonadeStand_3DayStarter
             {
                 ice = myRecipe.NumberOfIceCubes;
             }
-            if (cups > 0)
+            if (sizeOfBatch > 0)
             {
-                taste = (lemons * sugar + ice) / cups;
+                taste = (lemons * sugar + ice) / sizeOfBatch;
             }
-            RemoveItemsFromInventory(lemons, sugar, ice, cups);
-            return new Pitcher(cups, taste);
+            RemoveItemsFromInventory(lemons, sugar, ice, sizeOfBatch);
+            return new Pitcher(sizeOfBatch, taste);
         }
         public void RemoveItemsFromInventory(int lemons, int sugar, int ice, int cups)
         {
             inventory.Lemons.RemoveRange(0, lemons);
             inventory.SugarCubes.RemoveRange(0, sugar);
             inventory.IceCubes.RemoveRange(0, ice);
-            inventory.Cups.RemoveRange(0, cups);
         }
     }
 }
