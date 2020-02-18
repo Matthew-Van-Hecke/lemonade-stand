@@ -27,15 +27,15 @@ namespace LemonadeStand_3DayStarter
         {
             this.random = random;
             names = new List<string>() { "George", "John", "Thomas", "James", "Andrew", "Millard", "Franklin" };
-            name = names[random.Next(names.Count)];
-            tasteConstant = random.Next(4, 7);
-            thirst = random.Next(1, 3);
+            name = names[RandomNumberGenerator(0, names.Count)];
+            tasteConstant = RandomNumberGenerator(4, 7);
+            thirst = RandomNumberGenerator(1, 3);
         }
-        public int RandomNumberGenerator(int min, int max)
+        //Member Methods
+        private int RandomNumberGenerator(int min, int max)
         {
             return random.Next(min, max);
         }
-        //Member Methods
         //This method is not currently used anywhere, but will be called when I add functionality for changing popularity of the lemonade stand.
         public bool CustomerSatisfied(Pitcher pitcher)
         {

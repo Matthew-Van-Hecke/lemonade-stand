@@ -29,11 +29,14 @@ namespace LemonadeStand_3DayStarter
         public Weather(Random random)
         {
             this.random = random;
-            temperature = random.Next(50, 100);
+            temperature = RandomNumberGenerator(50, 100);
             conditions = new List<string> { "Raining", "Overcast", "Sunny" };
-            currentCondition = conditions[random.Next(conditions.Count)];
+            currentCondition = conditions[RandomNumberGenerator(0, conditions.Count)];
         }
         //Member Methods
-
+        private int RandomNumberGenerator(int min, int max)
+        {
+            return random.Next(min, max);
+        }
     }
 }

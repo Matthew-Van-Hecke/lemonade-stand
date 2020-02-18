@@ -29,19 +29,15 @@ namespace LemonadeStand_3DayStarter
         {
             weather = new Weather(random);
             customers = new List<Customer>() { new Customer(random), new Customer(random), new Customer(random), new Customer(random) };
-            weatherValue = (weather.Temperature * (weather.Conditions.IndexOf(weather.CurrentCondition) + 1)/10);
+            SetWeatherValue();
             numberOfCupsSoldToday = 0;
         }
-        public Day()
-        {
-
-        }
-        public void SetWeatherValue()
+        //Member Methods
+        private void SetWeatherValue()
         {
             weatherValue = (weather.Temperature * (weather.Conditions.IndexOf(weather.CurrentCondition) + 1) / 10);
         }
-       
-        //Member Methods
+
 
     }
 }

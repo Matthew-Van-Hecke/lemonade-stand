@@ -28,7 +28,7 @@ namespace LemonadeStand_3DayStarter
         //Constructor
         public Pitcher(int numberOfCups, int taste)
         {
-            this.numberOfCupsRemaining = numberOfCups;
+            numberOfCupsRemaining = numberOfCups;
             this.taste = taste;
             pricePerCup = 0.25;
         }
