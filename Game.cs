@@ -43,6 +43,7 @@ namespace LemonadeStand_3DayStarter
             DisplayStatsAtStartOfDay();
             GoShopping();
             currentPitcher = player.MakePitcher(true);
+            currentPitcher.SetPricePerCup();
             PlayBusinessHours();
             ////Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
             DisplayStatsAtEndOfDay();

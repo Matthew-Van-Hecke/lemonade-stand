@@ -41,7 +41,7 @@ namespace LemonadeStand_3DayStarter
         {
             bool isNumber = true;
             double doubleUserInput = 0;
-            Console.WriteLine("How much would you like to charge per cup of lemonade");
+            Console.WriteLine("How much would you like to charge per cup of lemonade? Current price: $" + pricePerCup);
             do
             {
                 if (!isNumber || doubleUserInput < 0)

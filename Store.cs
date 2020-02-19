@@ -115,7 +115,7 @@ namespace LemonadeStand_3DayStarter
                 }
                 else
                 {
-                    Console.WriteLine("You can't afford that much ice.");
+                    Console.WriteLine("You can't afford that many cups.");
                 }
             }
         }
