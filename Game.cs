@@ -30,31 +30,25 @@ namespace LemonadeStand_3DayStarter
         //Member Methods
         public void PlayGame()
         {
-            //Loop through for each day.
             while (currentDay < 7)
             {
                 PlayDay();
             }
-            //Repeat for next day.
-            //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
             PrintGameResults();
         }
         private void PlayDay()
         {
             DisplayStatsAtStartOfDay();
             GoShopping();
-            currentPitcher = new Pitcher();
-            currentPitcher.MakeInitialBatchOfLemonade(player.MyRecipe, player.Inventory);
-            currentPitcher.SetPricePerCup();
+            SetUpCurrentPitcher();
             PlayBusinessHours();
-            ////Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
             DisplayStatsAtEndOfDay();
             MeltIce();
             player.Inventory.PrintInventory();
-            currentDay++;
             player.Wallet.TotalIncome += incomeToday;
             cupsSoldToday = 0;
             incomeToday = 0;
+            currentDay++;
         }
         private void DisplayStatsAtStartOfDay()
         {
@@ -81,19 +75,12 @@ namespace LemonadeStand_3DayStarter
             Customer customer;
             for (int i = 0; i < days[currentDay].Customers.Count; i++)
             {
-                if (currentPitcher.NumberOfCupsRemaining <= 0)
-                {
-                    currentPitcher.FillPitcher(player.MyRecipe, player.Inventory);
-                }
                 customer = days[currentDay].Customers[i];
-                if (customer.WillBuy(currentPitcher.Taste, days[currentDay].WeatherValue, currentPitcher.PricePerCup))
+                RefillPitcherIfNeeded();
+                CheckIfCustomerWillBuy(customer);
+                if (!CupsRemaining())
                 {
-                    if (player.Inventory.Cups.Count <= 0)
-                    {
-                        Console.WriteLine("You ran out of cups.");
-                        break;
-                    }
-                    SellCupOfLemonade();
+                    break;
                 }
             }
         }
@@ -117,6 +104,38 @@ namespace LemonadeStand_3DayStarter
         public void PrintGameResults()
         {
             Console.WriteLine("Game over.\nTotal expenses: $" + player.Wallet.TotalExpenses + "\nTotal income: $" + player.Wallet.TotalIncome + "\nYou made a profit of $" + (player.Wallet.TotalIncome - player.Wallet.TotalExpenses) + ".");
+        }
+        public void SetUpCurrentPitcher()
+        {
+            currentPitcher = new Pitcher();
+            currentPitcher.MakeInitialBatchOfLemonade(player.MyRecipe, player.Inventory);
+            currentPitcher.SetPricePerCup();
+        }
+        public void RefillPitcherIfNeeded()
+        {
+            if (currentPitcher.NumberOfCupsRemaining <= 0)
+            {
+                currentPitcher.FillPitcher(player.MyRecipe, player.Inventory);
+            }
+        }
+        public void CheckIfCustomerWillBuy(Customer customer)
+        {
+            if (customer.WillBuy(currentPitcher.Taste, days[currentDay].WeatherValue, currentPitcher.PricePerCup))
+            {
+                SellCupOfLemonade();
+            }
+        }
+        public bool CupsRemaining()
+        {
+            if (player.Inventory.Cups.Count <= 0)
+            {
+                Console.WriteLine("You ran out of cups.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
