@@ -30,18 +30,21 @@ namespace LemonadeStand_3DayStarter
         }
 
         // member methods (CAN DO)
-        public Pitcher MakePitcher()
+        public Pitcher MakePitcher(bool firstPitcher)
         {
             int taste = 0;
             int sizeOfBatch;
             int lemons;
             int sugar;
             int ice;
-            myRecipe.PrintCurrentRecipe();
-            if (myRecipe.WouldYouLikeToAdjustRecipe())
+            if (firstPitcher)
             {
-                myRecipe.AdjustRecipe(inventory);
                 myRecipe.PrintCurrentRecipe();
+                if (myRecipe.WouldYouLikeToAdjustRecipe())
+                {
+                    myRecipe.AdjustRecipe(inventory);
+                    myRecipe.PrintCurrentRecipe();
+                }
             }
             //This portion is functional but could use some cleaning up later.
                 sizeOfBatch = myRecipe.NumberOfCups;

@@ -42,7 +42,7 @@ namespace LemonadeStand_3DayStarter
         {
             DisplayStatsAtStartOfDay();
             GoShopping();
-            currentPitcher = player.MakePitcher();
+            currentPitcher = player.MakePitcher(true);
             PlayBusinessHours();
             ////Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
             DisplayStatsAtEndOfDay();
@@ -99,7 +99,7 @@ namespace LemonadeStand_3DayStarter
             {
                 if (currentPitcher.NumberOfCupsRemaining <= 0)
                 {
-                    currentPitcher = player.MakePitcher();
+                    currentPitcher = player.MakePitcher(false);
                 }
                 customer = days[currentDay].Customers[i];
                 if (WillBuy(customer))
