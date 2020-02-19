@@ -34,53 +34,6 @@ namespace LemonadeStand_3DayStarter
         }
 
         // member methods (CAN DO)
-        public Pitcher MakePitcher()
-        {
-            int taste = 0;
-            int sizeOfBatch;
-            int lemons;
-            int sugar;
-            int ice;
 
-            myRecipe.PrintCurrentRecipe();
-            if (myRecipe.WouldYouLikeToAdjustRecipe())
-            {
-                myRecipe.AdjustRecipe(inventory);
-                myRecipe.PrintCurrentRecipe();
-            }
-
-            //This portion is functional but could use some cleaning up later.
-                sizeOfBatch = myRecipe.NumberOfCups;
-            if (myRecipe.NumberOfLemons > inventory.Lemons.Count)
-            {
-                lemons = inventory.Lemons.Count;
-            }
-            else
-            {
-                lemons = myRecipe.NumberOfLemons;
-            }
-            if (myRecipe.NumberOfSugarCubes > inventory.SugarCubes.Count)
-            {
-                sugar = inventory.SugarCubes.Count;
-            }
-            else
-            {
-                sugar = myRecipe.NumberOfSugarCubes;
-            }
-            if (myRecipe.NumberOfIceCubes > inventory.IceCubes.Count)
-            {
-                ice = inventory.IceCubes.Count;
-            }
-            else
-            {
-                ice = myRecipe.NumberOfIceCubes;
-            }
-            if (sizeOfBatch > 0)
-            {
-                taste = (lemons * sugar + ice) / sizeOfBatch;
-            }
-            inventory.RemoveItemsFromInventoryToFillPitcher(lemons, sugar, ice);
-            return new Pitcher(sizeOfBatch, taste);
-        }
     }
 }

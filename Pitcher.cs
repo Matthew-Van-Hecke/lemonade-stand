@@ -26,10 +26,10 @@ namespace LemonadeStand_3DayStarter
             get { return pricePerCup; }
         }
         //Constructor
-        public Pitcher(int numberOfCups, int taste)
+        public Pitcher()
         {
-            numberOfCupsRemaining = numberOfCups;
-            this.taste = taste;
+            numberOfCupsRemaining = 0;
+            this.taste = 0;
             pricePerCup = 0.25;
         }
         //Member Methods
@@ -52,10 +52,59 @@ namespace LemonadeStand_3DayStarter
             } while (!isNumber || doubleUserInput < 0);
             pricePerCup = doubleUserInput;
         }
-        public void RefillPitcher(Recipe recipe, Inventory inventory)
+        public void MakeInitialBatchOfLemonade(Recipe recipe, Inventory inventory)
         {
+            int taste = 0;
+            int sizeOfBatch;
+            int lemons;
+            int sugar;
+            int ice;
+
+            recipe.PrintCurrentRecipe();
+            if (recipe.WouldYouLikeToAdjustRecipe())
+            {
+                recipe.AdjustRecipe(inventory);
+                recipe.PrintCurrentRecipe();
+            }
+
+            //This portion is functional but could use some cleaning up later.
+            FillPitcher(recipe, inventory);
+        }
+        public void FillPitcher(Recipe recipe, Inventory inventory)
+        {
+            int lemons;
+            int sugar;
+            int ice;
             numberOfCupsRemaining = recipe.NumberOfCups;
-            inventory.RemoveItemsFromInventoryToFillPitcher(recipe.NumberOfLemons, recipe.NumberOfSugarCubes, recipe.NumberOfIceCubes);
+            if (recipe.NumberOfLemons > inventory.Lemons.Count)
+            {
+                lemons = inventory.Lemons.Count;
+            }
+            else
+            {
+                lemons = recipe.NumberOfLemons;
+            }
+            if (recipe.NumberOfSugarCubes > inventory.SugarCubes.Count)
+            {
+                sugar = inventory.SugarCubes.Count;
+            }
+            else
+            {
+                sugar = recipe.NumberOfSugarCubes;
+            }
+            if (recipe.NumberOfIceCubes > inventory.IceCubes.Count)
+            {
+                ice = inventory.IceCubes.Count;
+            }
+            else
+            {
+                ice = recipe.NumberOfIceCubes;
+            }
+            if (numberOfCupsRemaining > 0)
+            {
+                taste = (lemons * sugar + ice) / numberOfCupsRemaining;
+            }
+            inventory.RemoveItemsFromInventoryToFillPitcher(lemons, sugar, ice);
         }
     }
 }

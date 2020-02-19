@@ -38,6 +38,18 @@ namespace LemonadeStand_3DayStarter
         }
         public bool WillBuy(int tasteOfLemonade, int todaysWeatherValue, double pricePerCup)
         {
+            double abilityToSell = todaysWeatherValue * thirst - pricePerCup - GetDifferenceOfTaste(tasteOfLemonade);
+            if (abilityToSell > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private double GetDifferenceOfTaste(int tasteOfLemonade)
+        {
             double differenceOfTaste;
             if (tasteOfLemonade >= tasteConstant)
             {
@@ -47,15 +59,7 @@ namespace LemonadeStand_3DayStarter
             {
                 differenceOfTaste = tasteConstant - tasteOfLemonade;
             }
-            double abilityToSell = todaysWeatherValue * thirst - pricePerCup - differenceOfTaste;
-            if (abilityToSell > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return differenceOfTaste;
         }
         //This method is not currently used anywhere, but will be called when I add functionality for changing popularity of the lemonade stand.
         public bool CustomerSatisfied(Pitcher pitcher)
