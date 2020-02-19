@@ -59,27 +59,7 @@ namespace LemonadeStand_3DayStarter
             player.Inventory.PrintInventory();
             Console.WriteLine("You have $" + player.Wallet.Money + " in your wallet.");
         }
-        private bool WillBuy(Customer customer)
-        {
-            double differenceOfTaste;
-            if (currentPitcher.Taste >= customer.TasteConstant)
-            {
-                differenceOfTaste = currentPitcher.Taste - customer.TasteConstant;
-            }
-            else
-            {
-                differenceOfTaste = customer.TasteConstant - currentPitcher.Taste;
-            }
-            double abilityToSell = days[currentDay].WeatherValue * customer.Thirst - currentPitcher.PricePerCup - differenceOfTaste;
-            if (abilityToSell > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
         private void GoShopping()
         {
             Console.WriteLine("\nYou have " + player.Inventory.Cups.Count + " cups in your inventory. Cups cost $" + store.PricePerCup + " each.");
@@ -102,7 +82,7 @@ namespace LemonadeStand_3DayStarter
                     currentPitcher = player.MakePitcher(false);
                 }
                 customer = days[currentDay].Customers[i];
-                if (WillBuy(customer))
+                if (customer.WillBuy(currentPitcher.Taste, days[currentDay].WeatherValue, currentPitcher.PricePerCup))
                 {
                     if (player.Inventory.Cups.Count <= 0)
                     {
