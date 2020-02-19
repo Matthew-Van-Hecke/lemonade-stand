@@ -16,6 +16,7 @@ namespace LemonadeStand_3DayStarter
         int currentDay;
         int cupsSoldToday;
         double incomeToday;
+        int lengthOfGame;
         
         Random masterRandom;
         //Constructor
@@ -26,11 +27,13 @@ namespace LemonadeStand_3DayStarter
             store = new Store();
             days = new List<Day>() { new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom), new Day(masterRandom) };
             currentDay = 0;
+            lengthOfGame = 7;
         }
         //Member Methods
         public void PlayGame()
         {
-            while (currentDay < 7)
+            PrintGameInstructions();
+            while (currentDay < lengthOfGame)
             {
                 PlayDay();
             }
@@ -103,7 +106,7 @@ namespace LemonadeStand_3DayStarter
         }
         public void PrintGameResults()
         {
-            Console.WriteLine("Game over.\nTotal expenses: $" + player.Wallet.TotalExpenses + "\nTotal income: $" + player.Wallet.TotalIncome + "\nYou made a profit of $" + (player.Wallet.TotalIncome - player.Wallet.TotalExpenses) + ".");
+            Console.WriteLine("Game over.\nTotal expenses: $" + player.Wallet.TotalExpenses + "\nTotal income: $" + player.Wallet.TotalIncome + "\nYou made a profit of $" + (player.Wallet.TotalIncome - player.Wallet.TotalExpenses) + ".\n\nGood game!");
         }
         public void SetUpCurrentPitcher()
         {
@@ -136,6 +139,10 @@ namespace LemonadeStand_3DayStarter
             {
                 return true;
             }
+        }
+        public void PrintGameInstructions()
+        {
+            Console.WriteLine("Welcome to The Lemonade Stand Game!\nThe goal of the game is to make as much profit as possible on your lemonade stand.\nEach day, you will be given the opportunity to buy ingredients, set the propoortions for the day's lemonade, and set the price.\nRemeber, the weather will have an impact on the price customers are willing to pay for a cup.\nThe game will last for " + lengthOfGame + " days.\nGood luck!");
         }
     }
 }
