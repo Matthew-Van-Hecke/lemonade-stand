@@ -52,9 +52,10 @@ namespace LemonadeStand_3DayStarter
             } while (!isNumber || doubleUserInput < 0);
             pricePerCup = doubleUserInput;
         }
-        public void RefillPitcher(int numberOfCups)
+        public void RefillPitcher(Recipe recipe, Inventory inventory)
         {
-            numberOfCupsRemaining = numberOfCups;
+            numberOfCupsRemaining = recipe.NumberOfCups;
+            inventory.RemoveItemsFromInventoryToFillPitcher(recipe.NumberOfLemons, recipe.NumberOfSugarCubes, recipe.NumberOfIceCubes);
         }
     }
 }

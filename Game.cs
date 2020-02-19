@@ -82,7 +82,7 @@ namespace LemonadeStand_3DayStarter
             {
                 if (currentPitcher.NumberOfCupsRemaining <= 0)
                 {
-                    currentPitcher.RefillPitcher(player.MyRecipe.NumberOfCups);
+                    currentPitcher.RefillPitcher(player.MyRecipe, player.Inventory);
                 }
                 customer = days[currentDay].Customers[i];
                 if (customer.WillBuy(currentPitcher.Taste, days[currentDay].WeatherValue, currentPitcher.PricePerCup))

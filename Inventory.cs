@@ -79,5 +79,27 @@ namespace LemonadeStand_3DayStarter
         {
             Console.WriteLine($"You currently have {cups.Count} cups, {lemons.Count} lemons, {sugarCubes.Count} sugar cubes, and {iceCubes.Count} ice cubes in your inventory");
         }
+        public void RemoveLemonsFromInventory(int quantityToBeRemoved)
+        {
+            lemons.RemoveRange(0, quantityToBeRemoved);
+        }
+        public void RemoveSugarCubesFromInventory(int quantityToBeRemoved)
+        {
+            sugarCubes.RemoveRange(0, quantityToBeRemoved);
+        }
+        public void RemoveIceCubesFromInventory(int quantityToBeRemoved)
+        {
+            iceCubes.RemoveRange(0, quantityToBeRemoved);
+        }
+        public void RemoveCupsFromInventory(int quantityToBeRemoved)
+        {
+            cups.RemoveRange(0, quantityToBeRemoved);
+        }
+        public void RemoveItemsFromInventoryToFillPitcher(int numberOfLemons, int numberOfSugarCubes, int numberOfIceCubes)
+        {
+            RemoveLemonsFromInventory(numberOfLemons);
+            RemoveSugarCubesFromInventory(numberOfSugarCubes);
+            RemoveIceCubesFromInventory(numberOfIceCubes);
+        }
     }
 }
