@@ -38,8 +38,8 @@ namespace LemonadeStand_3DayStarter
         }
         public bool WillBuy(int tasteOfLemonade, int todaysWeatherValue, double pricePerCup)
         {
-            double abilityToSell = todaysWeatherValue * thirst - pricePerCup - GetDifferenceOfTaste(tasteOfLemonade);
-            if (abilityToSell > 0)
+            double abilityToSell = (todaysWeatherValue * thirst) - ((pricePerCup * 10) * (GetDifferenceOfTaste(tasteOfLemonade)));
+            if (abilityToSell > 10)
             {
                 return true;
             }
