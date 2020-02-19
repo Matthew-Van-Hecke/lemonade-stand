@@ -39,9 +39,13 @@ namespace LemonadeStand_3DayStarter
         }
         public void SetPricePerCup()
         {
+            Console.WriteLine("How much would you like to charge per cup of lemonade? Current price: $" + pricePerCup);
+            pricePerCup = GetDoubleFromUserInput();
+        }
+        public double GetDoubleFromUserInput()
+        {
             bool isNumber = true;
             double doubleUserInput = 0;
-            Console.WriteLine("How much would you like to charge per cup of lemonade? Current price: $" + pricePerCup);
             do
             {
                 if (!isNumber || doubleUserInput < 0)
@@ -50,7 +54,7 @@ namespace LemonadeStand_3DayStarter
                 }
                 isNumber = double.TryParse(Console.ReadLine(), out doubleUserInput);
             } while (!isNumber || doubleUserInput < 0);
-            pricePerCup = doubleUserInput;
+            return doubleUserInput;
         }
         public void MakeInitialBatchOfLemonade(Recipe recipe, Inventory inventory)
         {
@@ -59,52 +63,66 @@ namespace LemonadeStand_3DayStarter
             int lemons;
             int sugar;
             int ice;
-
+            LetUserMakeLemonadePlan(recipe, inventory);
+            FillPitcher(recipe, inventory);
+        }
+        public void LetUserMakeLemonadePlan(Recipe recipe, Inventory inventory)
+        {
             recipe.PrintCurrentRecipe();
             if (recipe.WouldYouLikeToAdjustRecipe())
             {
                 recipe.AdjustRecipe(inventory);
                 recipe.PrintCurrentRecipe();
             }
-
-            //This portion is functional but could use some cleaning up later.
-            FillPitcher(recipe, inventory);
         }
         public void FillPitcher(Recipe recipe, Inventory inventory)
         {
-            int lemons;
-            int sugar;
-            int ice;
             numberOfCupsRemaining = recipe.NumberOfCups;
+            int lemons = AdjustNumberOfLemonsIfNeeded(recipe, inventory);
+            int sugar = AdjustQuantityOfSugarIfNeeded(recipe, inventory);
+            int ice = AdjustQuantityOfIceIfNeeded(recipe, inventory);
+            SetTasteOfPitcher(lemons, sugar, ice, numberOfCupsRemaining);
+            inventory.RemoveItemsFromInventoryToFillPitcher(lemons, sugar, ice);
+        }
+        public int AdjustNumberOfLemonsIfNeeded(Recipe recipe, Inventory inventory)
+        {
             if (recipe.NumberOfLemons > inventory.Lemons.Count)
             {
-                lemons = inventory.Lemons.Count;
+                return inventory.Lemons.Count;
             }
             else
             {
-                lemons = recipe.NumberOfLemons;
+                return recipe.NumberOfLemons;
             }
+        }
+        public int AdjustQuantityOfSugarIfNeeded(Recipe recipe, Inventory inventory)
+        {
             if (recipe.NumberOfSugarCubes > inventory.SugarCubes.Count)
             {
-                sugar = inventory.SugarCubes.Count;
+                return inventory.SugarCubes.Count;
             }
             else
             {
-                sugar = recipe.NumberOfSugarCubes;
+                return recipe.NumberOfSugarCubes;
             }
+        }
+        public int AdjustQuantityOfIceIfNeeded(Recipe recipe, Inventory inventory)
+        {
             if (recipe.NumberOfIceCubes > inventory.IceCubes.Count)
             {
-                ice = inventory.IceCubes.Count;
+                return inventory.IceCubes.Count;
             }
             else
             {
-                ice = recipe.NumberOfIceCubes;
+                return recipe.NumberOfIceCubes;
             }
+        }
+        public void SetTasteOfPitcher(int lemons, int sugar, int ice, int numberOfCupsRemaining)
+        {
             if (numberOfCupsRemaining > 0)
             {
                 taste = (lemons * sugar + ice) / numberOfCupsRemaining;
             }
-            inventory.RemoveItemsFromInventoryToFillPitcher(lemons, sugar, ice);
         }
     }
 }
