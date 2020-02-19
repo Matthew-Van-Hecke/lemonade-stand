@@ -20,6 +20,10 @@ namespace LemonadeStand_3DayStarter
             get { return wallet; }
         }
         Recipe myRecipe;
+        public Recipe MyRecipe
+        {
+            get { return myRecipe; }
+        }
 
         // constructor (SPAWNER)
         public Player()
@@ -30,22 +34,21 @@ namespace LemonadeStand_3DayStarter
         }
 
         // member methods (CAN DO)
-        public Pitcher MakePitcher(bool firstPitcher)
+        public Pitcher MakePitcher()
         {
             int taste = 0;
             int sizeOfBatch;
             int lemons;
             int sugar;
             int ice;
-            if (firstPitcher)
+
+            myRecipe.PrintCurrentRecipe();
+            if (myRecipe.WouldYouLikeToAdjustRecipe())
             {
+                myRecipe.AdjustRecipe(inventory);
                 myRecipe.PrintCurrentRecipe();
-                if (myRecipe.WouldYouLikeToAdjustRecipe())
-                {
-                    myRecipe.AdjustRecipe(inventory);
-                    myRecipe.PrintCurrentRecipe();
-                }
             }
+
             //This portion is functional but could use some cleaning up later.
                 sizeOfBatch = myRecipe.NumberOfCups;
             if (myRecipe.NumberOfLemons > inventory.Lemons.Count)

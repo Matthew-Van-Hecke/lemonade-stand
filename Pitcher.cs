@@ -52,5 +52,9 @@ namespace LemonadeStand_3DayStarter
             } while (!isNumber || doubleUserInput < 0);
             pricePerCup = doubleUserInput;
         }
+        public void RefillPitcher(int numberOfCups)
+        {
+            numberOfCupsRemaining = numberOfCups;
+        }
     }
 }

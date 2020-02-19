@@ -42,7 +42,7 @@ namespace LemonadeStand_3DayStarter
         {
             DisplayStatsAtStartOfDay();
             GoShopping();
-            currentPitcher = player.MakePitcher(true);
+            currentPitcher = player.MakePitcher();
             currentPitcher.SetPricePerCup();
             PlayBusinessHours();
             ////Use the CustomerSatisfied method to adjust popularity of the lemonade stand.
@@ -81,7 +81,7 @@ namespace LemonadeStand_3DayStarter
             {
                 if (currentPitcher.NumberOfCupsRemaining <= 0)
                 {
-                    currentPitcher = player.MakePitcher(false);
+                    currentPitcher.RefillPitcher(player.MyRecipe.NumberOfCups);
                 }
                 customer = days[currentDay].Customers[i];
                 if (customer.WillBuy(currentPitcher.Taste, days[currentDay].WeatherValue, currentPitcher.PricePerCup))
