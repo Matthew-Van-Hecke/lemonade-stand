@@ -37,6 +37,7 @@ namespace LemonadeStand_3DayStarter
             }
             //Repeat for next day.
             //At the end of the game, print overall stats (at least profit/loss, but maybe also total amount spent on ingredients)
+            PrintGameResults();
         }
         private void PlayDay()
         {
@@ -111,6 +112,10 @@ namespace LemonadeStand_3DayStarter
         {
             Console.WriteLine("All of your remaining ice cubes melted");
             player.Inventory.IceCubes.Clear();
+        }
+        public void PrintGameResults()
+        {
+            Console.WriteLine("Game over.\nTotal expenses: $" + player.Wallet.TotalExpenses + "\nTotal income: $" + player.Wallet.TotalIncome + "\nYou made a profit of $" + (player.Wallet.TotalIncome - player.Wallet.TotalExpenses) + ".");
         }
     }
 }

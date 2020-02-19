@@ -79,10 +79,10 @@ namespace LemonadeStand_3DayStarter
             {
                 taste = (lemons * sugar + ice) / sizeOfBatch;
             }
-            RemoveItemsFromInventory(lemons, sugar, ice, sizeOfBatch);
+            RemoveItemsFromInventory(lemons, sugar, ice);
             return new Pitcher(sizeOfBatch, taste);
         }
-        public void RemoveItemsFromInventory(int lemons, int sugar, int ice, int cups)
+        public void RemoveItemsFromInventory(int lemons, int sugar, int ice)
         {
             inventory.Lemons.RemoveRange(0, lemons);
             inventory.SugarCubes.RemoveRange(0, sugar);

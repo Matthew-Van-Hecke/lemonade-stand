@@ -41,6 +41,7 @@ namespace LemonadeStand_3DayStarter
         public void PayMoneyForItems(double transactionAmount)
         {
             money -= transactionAmount;
+            totalExpenses += transactionAmount;
         }
         public void UpdateTotalExpenses(double expenses)
         {
