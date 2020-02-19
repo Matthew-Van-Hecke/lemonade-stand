@@ -117,7 +117,6 @@ namespace LemonadeStand_3DayStarter
         {
             currentPitcher.PourCup();
             player.Wallet.Money += currentPitcher.PricePerCup;
-            currentPitcher.NumberOfCupsRemaining--;
             player.Inventory.Cups.Remove(player.Inventory.Cups[0]);
             cupsSoldToday++;
             incomeToday += currentPitcher.PricePerCup;
