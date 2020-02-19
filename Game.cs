@@ -50,6 +50,7 @@ namespace LemonadeStand_3DayStarter
             MeltIce();
             player.Inventory.PrintInventory();
             currentDay++;
+            player.Wallet.TotalIncome += incomeToday;
             cupsSoldToday = 0;
             incomeToday = 0;
         }

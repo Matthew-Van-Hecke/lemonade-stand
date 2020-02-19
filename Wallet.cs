@@ -24,11 +24,13 @@ namespace LemonadeStand_3DayStarter
         public double TotalExpenses
         {
             get { return totalExpenses; }
+            set { totalExpenses = value; }
         }
         private double totalIncome;
         public double TotalIncome
         {
             get { return totalIncome; }
+            set { totalIncome = value; }
         }
 
         public Wallet()
