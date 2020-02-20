@@ -32,12 +32,17 @@ namespace LemonadeStand_3DayStarter
         //Member Methods
         public void PlayGame()
         {
-            PrintGameInstructions();
-            while (currentDay < lengthOfGame)
+            do
             {
-                PlayDay();
-            }
-            PrintGameResults();
+                PrintGameInstructions();
+                while (currentDay < lengthOfGame)
+                {
+                    PlayDay();
+                }
+                PrintGameResults();
+                currentDay = 0;
+            } while (PlayAgain());
+            Console.WriteLine("Good game! Thanks for playing!");
         }
         private void PlayDay()
         {
@@ -142,7 +147,34 @@ namespace LemonadeStand_3DayStarter
         }
         public void PrintGameInstructions()
         {
+            Console.WriteLine("--------------------------------");
             Console.WriteLine("Welcome to The Lemonade Stand Game!\nThe goal of the game is to make as much profit as possible on your lemonade stand.\nEach day, you will be given the opportunity to buy ingredients, set the propoortions for the day's lemonade, and set the price.\nRemeber, the weather will have an impact on the price customers are willing to pay for a cup.\nThe game will last for " + lengthOfGame + " days.\nGood luck!");
+            Console.WriteLine("--------------------------------");
+        }
+        public bool PlayAgain()
+        {
+            Console.WriteLine("Would you like to play again?");
+            if (GetUserInputForAskIfPlayAgain() == "yes")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public string GetUserInputForAskIfPlayAgain()
+        {
+            string userInput = "no";
+            do
+            {
+                if (userInput.ToLower() != "yes" && userInput.ToLower() != "no")
+                {
+                    Console.WriteLine("Invalid response. Please type \"yes\" or \"no\".");
+                }
+                userInput = Console.ReadLine();
+            } while (userInput.ToLower() != "yes" && userInput.ToLower() != "no");
+            return userInput.ToLower();
         }
     }
 }
